@@ -1,0 +1,4 @@
+!.gitignore
+!cloudflare-import-ptr-gen.sh
+!README.md
+*
