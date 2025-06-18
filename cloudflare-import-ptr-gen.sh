@@ -9,5 +9,5 @@ while IFS= read -r line; do
     ip="${line%%,*}"   # Everything before the first comma
     name="${line#*,}"      # Everything after the first comma
 
-    echo "$(nslookup $ip | head -n 1 | awk '{print $1}'). 1 IN PTR $name. ; $ip" >> $output
+    echo "$(python3 -c "import ipaddress, sys; print(ipaddress.ip_address(sys.argv[1]).reverse_pointer)" $ip). 1 IN PTR $name. ; $ip" >> $output
 done < "$file"
